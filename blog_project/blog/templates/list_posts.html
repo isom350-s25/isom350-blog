@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Blog</title>
+</head>
+<body>
+    <h1>List of blog posts</h1>
+    <ul>
+        {% for p in posts %}
+        <li>{{ p.title }}</li>
+        {% endfor %}
+    </ul>
+    </body>
+</html>
