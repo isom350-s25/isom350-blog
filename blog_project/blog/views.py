@@ -3,14 +3,29 @@ from .models import Post
 
 # Create your views here.
 def list_posts(request):
-    
-    # you need to fetch the posts
-    # from the database here
-    # and pass them to the template
-    
-    posts = Post.objects.filter(title__icontains='post')
+    posts = Post.objects.all()
     context = {
         'posts': posts
     }
-    
+    return render(request, 'list_posts.html', context)
+
+def list_todays_posts(request):
+    posts = Post.objects.all()
+    context = {
+        'posts': posts
+    }
+    return render(request, 'list_posts.html', context)
+
+def list_pubished_posts(request):
+    posts = Post.objects.all()
+    context = {
+        'posts': posts
+    }
+    return render(request, 'list_posts.html', context)
+
+def list_draft_posts(request):
+    posts = Post.objects.all()
+    context = {
+        'posts': posts
+    }
     return render(request, 'list_posts.html', context)

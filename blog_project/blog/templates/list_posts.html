@@ -6,7 +6,7 @@
     <h1>List of blog posts</h1>
     <ul>
         {% for p in posts %}
-        <li>{{ p.title }}</li>
+        <li>{{ p.title }}: created on {{ p.created_on|timesince }}</li>
         {% endfor %}
     </ul>
     </body>
