@@ -9,6 +9,14 @@
     <p>status: {{ post.status }}</p>
     <p>{{ post.body }}</p>
 
+    <h2>Comments:</h2>
+    <ul>
+    {% for comment in post.comment_set.all %}
+        <li>{{ comment.comment }}: created on {{ comment.created_on|timesince }} by {{ comments.authr }}</li>
+        
+
+    {% endfor %}
+    </ul
 
     </body>
 </html>

@@ -1,6 +1,6 @@
 from datetime import date
-from django.shortcuts import render
-from .models import Post
+from django.shortcuts import render, get_object_or_404
+from .models import Post, Comment
 
 # Create your views here.
 def list_posts(request):
@@ -32,9 +32,24 @@ def list_draft_posts(request):
     return render(request, 'list_posts.html', context)
 
 def show_post(request, pid):
-    post = Post.objects.get(id=pid)
+    #post = Post.objects.get(id=pid)
+    
+    post = get_object_or_404(Post, pk=pid)
+    #comments = Comment.objects.filter(post=post)
+    comments = post.comment_set.all()
+    
     context = {
-        'post': post
+        'post': post,
+        'comments': comments,
     }
     return render(request, 'show_post.html', context)
+
+
+# Create your views here.
+def search_posts(request, q):
+    posts = Post.objects.filter(title__icontains=q)
+    context = {
+        'posts': posts
+    }
+    return render(request, 'list_posts.html', context)
     
