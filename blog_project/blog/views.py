@@ -1,6 +1,8 @@
 from datetime import date
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
+from .forms import PostForm
+from django.utils.text import slugify
 
 # Create your views here.
 def list_posts(request):
@@ -52,4 +54,18 @@ def search_posts(request, q):
         'posts': posts
     }
     return render(request, 'list_posts.html', context)
+    
+def create_post(request):
+    form = PostForm(request.POST or None)
+    c = {
+        'f': form,
+    }
+    
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.slug = slugify(post.title)
+        post.save()
+        return redirect('show_post', pid=post.id)
+    
+    return render(request, 'create_post.html', c)
     

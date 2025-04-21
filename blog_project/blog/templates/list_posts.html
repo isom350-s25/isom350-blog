@@ -9,6 +9,9 @@
         <li><a href="{% url 'show_post' p.id %}">{{ p.title }}</a>: created on {{ p.created_on|timesince }}</li>
         {% endfor %}
     </ul>
+
+    <a href="{% url 'create_post' %}">Create a new post</a>
+    
     </body>
 
     

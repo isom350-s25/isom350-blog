@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (list_posts, list_todays_posts, 
                     list_pubished_posts, list_draft_posts, 
-                    show_post, search_posts)
+                    show_post, search_posts, create_post)
 
 #from . import views # needs views. before every function
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('posts/draft/', list_draft_posts, name='list_draft_posts'),
     path('post/show/single/<int:pid>/', show_post, name='show_post'),      
     path('search/<str:q>/', search_posts, name='search_posts'),
+    path('create/', create_post, name='create_post'),
 ]

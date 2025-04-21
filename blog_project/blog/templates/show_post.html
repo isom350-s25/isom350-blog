@@ -6,7 +6,7 @@
     <h1>{{ post.title }}</h1>
     {{ post.title }}: created on {{ p.created_on|timesince }}</li>
     
-    <p>status: {{ post.status }}</p>
+    <p>status: {{ post.get_status_display }}</p>
     <p>{{ post.body }}</p>
 
     <h2>Comments:</h2>
