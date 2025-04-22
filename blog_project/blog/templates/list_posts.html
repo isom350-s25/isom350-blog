@@ -6,7 +6,8 @@
     <h1>List of blog posts</h1>
     <ul>
         {% for p in posts %}
-        <li><a href="{% url 'show_post' p.id %}">{{ p.title }}</a>: created on {{ p.created_on|timesince }}</li>
+        <li><a href="{% url 'show_post' p.id %}">{{ p.title }}</a>: created on {{ p.created_on|timesince }}</br>
+        Comments: {{ p.comment_set.count }} - <a href="{% url 'edit_post' p.pk %}">Edit post</a> </li>
         {% endfor %}
     </ul>
 

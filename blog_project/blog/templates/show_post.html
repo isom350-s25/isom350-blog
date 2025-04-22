@@ -12,11 +12,20 @@
     <h2>Comments:</h2>
     <ul>
     {% for comment in post.comment_set.all %}
-        <li>{{ comment.comment }}: created on {{ comment.created_on|timesince }} by {{ comments.authr }}</li>
+        <li>{{ comment.comment }}: created on {{ comment.created_on|timesince }} by {{ comments.authr }} - <a href="{% url 'edit_comment' comment.pk %}">Edit</a> </li>
         
 
     {% endfor %}
     </ul
+
+    <h2>Add a comment:</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add comment">
+    </form> 
+
+    <a href="{% url 'list_posts' %}">Back to list of posts</a>
 
     </body>
 </html>

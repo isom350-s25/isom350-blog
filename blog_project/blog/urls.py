@@ -2,7 +2,8 @@ from django.urls import path
 
 from .views import (list_posts, list_todays_posts, 
                     list_pubished_posts, list_draft_posts, 
-                    show_post, search_posts, create_post)
+                    show_post, search_posts, create_post,
+                    edit_post, edit_comment)
 
 #from . import views # needs views. before every function
 
@@ -14,4 +15,7 @@ urlpatterns = [
     path('post/show/single/<int:pid>/', show_post, name='show_post'),      
     path('search/<str:q>/', search_posts, name='search_posts'),
     path('create/', create_post, name='create_post'),
+    path('post/edit/<int:pid>/', edit_post, name='edit_post'),      
+    path('comment/edit/<int:cid>/', edit_comment, name='edit_comment'),      
+
 ]
