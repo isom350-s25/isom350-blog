@@ -1,19 +1,22 @@
-<html>
-<head>
-    <title>Blog</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{%block title%}LIST KU BLOG POSTS{%endblock%}
+
+
+{% block content %}
+
     <h1>List of blog posts</h1>
-    <ul>
+    <ol class="list-group list-group-numbered">
         {% for p in posts %}
-        <li><a href="{% url 'show_post' p.id %}">{{ p.title }}</a>: created on {{ p.created_on|timesince }}</br>
-        Comments: {{ p.comment_set.count }} - <a href="{% url 'edit_post' p.pk %}">Edit post</a> </li>
+        <li class="list-group-item"><a href="{% url 'show_post' p.id %}">{{ p.title }}</a>: created on {{ p.created_on|timesince }}</br>
+        <a class="btn btn-info" href="{% url 'edit_post' p.pk %}">Edit post</a>
+             <a class="btn btn-danger" href="{% url 'delete_post' p.pk %}">Delete post</a> 
+        <span class="badge text-bg-primary rounded-pill">{{ p.comment_set.count }}</span>
+    </li>
         {% endfor %}
-    </ul>
+    </ol>
 
     <a href="{% url 'create_post' %}">Create a new post</a>
-    
-    </body>
-
-    
-</html>
+ 
+    {% endblock %}

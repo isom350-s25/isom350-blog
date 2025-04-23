@@ -106,3 +106,17 @@ def edit_comment(request, cid):
     
     return render(request, 'create_post.html', c)
     
+def delete_post(request, pid):
+    post = get_object_or_404(Post, pk=pid)
+    m = f"Are you sure you want to delete {post.title}"
+    c = {
+        'message': m,
+    }
+    
+    if "confirm" in request.GET:
+        post.delete()
+        return redirect('list_posts')
+    elif "cancel" in request.GET:
+        return redirect('list_posts')
+    return render(request, 'confirm.html', c)
+   

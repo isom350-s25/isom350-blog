@@ -1,8 +1,8 @@
-<html>
-<head>
-    <title>Blog</title>
-</head>
-<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+
     <h1>{{ post.title }}</h1>
     {{ post.title }}: created on {{ p.created_on|timesince }}</li>
     
@@ -27,5 +27,4 @@
 
     <a href="{% url 'list_posts' %}">Back to list of posts</a>
 
-    </body>
-</html>
+    {% endblock %}

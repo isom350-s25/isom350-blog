@@ -3,7 +3,7 @@ from django.urls import path
 from .views import (list_posts, list_todays_posts, 
                     list_pubished_posts, list_draft_posts, 
                     show_post, search_posts, create_post,
-                    edit_post, edit_comment)
+                    edit_post, edit_comment, delete_post)
 
 #from . import views # needs views. before every function
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('create/', create_post, name='create_post'),
     path('post/edit/<int:pid>/', edit_post, name='edit_post'),      
     path('comment/edit/<int:cid>/', edit_comment, name='edit_comment'),      
+    path('post/delete/<int:pid>/', delete_post, name='delete_post'),      
 
 ]
